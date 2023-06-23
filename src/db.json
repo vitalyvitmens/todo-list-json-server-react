@@ -1,0 +1,19 @@
+{
+	"todos": [
+		{
+			"title": "купи молоко",
+			"completed": false,
+			"id": 10
+		},
+		{
+			"title": "выгуляй Ричи",
+			"completed": false,
+			"id": 20
+		},
+		{
+			"title": "купи хлеб",
+			"completed": false,
+			"id": 30
+		}
+	]
+}
