@@ -1,33 +1,28 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { TodoContainer } from './Components/TodoContainer'
-import { Bars } from 'react-loader-spinner'
+import { Loader } from './Components/loader/loader.js'
 
 export const App = () => {
-  const [json, setjson] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [todosServer, setTodosServer] = useState([])
+  const [isLoadingJsonServerComponent, setIsLoadingJsonServerComponent] =
+    useState(false)
 
   useEffect(() => {
-    fetch('http://localhost:3006/todos')
-      .then((response) => response.json())
-      .then((json) => {
-          setjson(json)
-          setLoading(true)
+    fetch('http://localhost:6677/todos')
+      .then((loadedData) => loadedData.json())
+      .then((loadedTodo) => {
+        setTodosServer(loadedTodo)
+        setIsLoadingJsonServerComponent(true)
       })
   }, [])
 
   return (
     <div>
-      {loading ? (
-        <TodoContainer jsonTodos={json} />
+      {isLoadingJsonServerComponent ? (
+        <TodoContainer jsonTodos={todosServer} />
       ) : (
-        <Bars
-          height="180"
-          width="180"
-          color="#4fa94d"
-          ariaLabel="bars-loading"
-          visible={true}
-        />
+        <Loader />
       )}
     </div>
   )
