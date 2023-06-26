@@ -9,7 +9,7 @@ export const App = () => {
     useState(false)
 
   useEffect(() => {
-    fetch('http://localhost:6677/todos')
+    fetch('http://localhost:8204/todos')
       .then((loadedData) => loadedData.json())
       .then((loadedTodo) => {
         setTodosServer(loadedTodo)
